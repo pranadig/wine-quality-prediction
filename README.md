@@ -1,78 +1,105 @@
 # Predicting Red Wine Quality
 
-**Individual Machine Learning Project | R**
-
-An individual data science project exploring how the chemical properties of red wine relate to its quality score. The project uses statistical analysis and machine learning to compare regression approaches and evaluate their ability to predict wine quality on unseen data.
-
 ## Project Overview
 
-The analysis uses the red wine quality dataset, containing 1,599 observations and 11 physicochemical predictor variables. The objective is to predict wine quality scores using chemical measurements and compare the performance of different regression models.
+This project uses statistical analysis and machine learning to predict the quality of red wine based on its physicochemical properties.
 
-## Models Compared
+The analysis uses the UCI Red Wine Quality dataset, containing 1,599 observations and 11 physicochemical predictor variables.
 
-- **Mean Baseline:** Establishes a reference prediction using the average quality score.
-- **Ordinary Least Squares (OLS):** Fits a linear regression model.
-- **Ridge Regression:** Applies regularization to reduce the influence of less stable coefficients.
-- **k-Nearest Neighbors (kNN):** Predicts quality based on neighboring observations.
+This was an individual data science project completed by Pranav Nadig.
 
-## Methodology
+## Models and Performance
 
-The project includes:
+Four approaches were evaluated:
 
-1. Exploratory data analysis and predictor correlation analysis.
-2. Examination of the distribution of wine quality scores.
-3. Comparison of OLS and ridge regression coefficients.
-4. Hyperparameter tuning for ridge regression and kNN.
-5. Grouped cross-validation to account for repeated chemical profiles.
-6. Training-fold standardization to avoid information leakage.
-7. Held-out test evaluation and residual diagnostics.
+- Mean baseline
+- Ordinary Least Squares (OLS) regression
+- Ridge regression
+- K-Nearest Neighbors (kNN) regression
 
-## Model Performance
-
-The reported held-out test results are:
+**Held-out test performance**
 
 | Model | Test RMSE |
 |---|---:|
 | Mean baseline | 0.813 |
-| OLS | 0.681 |
+| OLS regression | 0.681 |
 | Ridge regression | 0.680 |
-| kNN | 0.677 |
+| kNN regression | 0.677 |
 
-Lower RMSE indicates lower prediction error. All three fitted models outperform the mean baseline. kNN achieves the lowest reported test RMSE, although its improvement over OLS and ridge regression is small.
+Lower RMSE indicates better predictive performance. All three regression models improved on the mean baseline, with relatively similar results.
+
+## Methodology
+
+- Exploratory data analysis of physicochemical variables
+- Correlation analysis to examine relationships between predictors
+- OLS and ridge regression modeling
+- Ridge penalty and kNN neighborhood-size tuning
+- Grouped cross-validation to account for repeated chemical profiles
+- Training-fold-only standardization to prevent data leakage
+- Held-out test evaluation and residual diagnostics
 
 ## Visualizations
 
-The project includes visual analysis of:
+### Training Data Exploration
+![Training data exploration](figures/training-exploration-1.png)
 
-- Predictor correlations and quality-score distribution
-- OLS versus ridge regression coefficients
-- Ridge penalty and kNN neighborhood-size tuning
-- Held-out model performance
-- Observed versus predicted quality
-- Residual patterns on unseen observations
+### Model Coefficient Comparison
+![Coefficient plot](figures/coefficient-plot-1.png)
+
+### Model Complexity and Tuning
+![Complexity curves](figures/complexity-curves-1.png)
+
+### Test Set Model Comparison
+![Test comparison](figures/test-comparison-1.png)
+
+### Test Set Diagnostics
+![Test diagnostics](figures/test-diagnostics-1.png)
+
+## Full Analysis Report
+
+The complete rendered report includes the analysis, methodology, model development, visualizations, and evaluation.
+
+[**View the full HTML report**](report/wine_quality_report.html)
+
+The original R Markdown source is also available:
+
+[`wine_quality_report.Rmd`](wine_quality_report.Rmd)
 
 ## Tools and Technologies
 
-- **Language:** R
-- **Analysis:** Statistical modeling and exploratory data analysis
-- **Machine Learning:** OLS, ridge regression, kNN
-- **Validation:** Grouped cross-validation and held-out testing
-- **Reporting:** R Markdown and HTML
-- **Visualization:** R-generated statistical plots
+- R
+- R Markdown
+- Statistical modeling
+- Machine learning
+- Data visualization
+- Cross-validation and model evaluation
 
-## Repository Contents
+## Repository Structure
 
-- `wine_quality_report.Rmd` — Reproducible R Markdown analysis
-- `winequality-red.csv` — Dataset
-- `report/` — Rendered HTML report
-- `figures/` — Generated visualizations
-- `results/` — Additional model outputs, if available
+```text
+wine-quality-prediction/
+├── README.md
+├── wine_quality_report.Rmd
+├── winequality-red.csv
+├── report/
+│   └── wine_quality_report.html
+└── figures/
+    ├── training-exploration-1.png
+    ├── coefficient-plot-1.png
+    ├── complexity-curves-1.png
+    ├── test-comparison-1.png
+    └── test-diagnostics-1.png
+```
 
-## Key Learning Outcomes
+## Key Takeaways
 
-- Applying regression techniques to a real-world dataset
-- Comparing linear and neighborhood-based prediction methods
-- Understanding regularization and hyperparameter tuning
-- Designing validation procedures that reduce data leakage
-- Evaluating predictive models using RMSE and residual analysis
-- Communicating analytical
+- Physicochemical measurements can provide useful signals for predicting red wine quality.
+- Regression models substantially improved prediction over the mean baseline.
+- Ridge regression and kNN performed similarly to OLS on the held-out test set.
+- Careful validation and prevention of data leakage are important when evaluating predictive models.
+
+## Dataset
+
+Source: [UCI Machine Learning Repository – Wine Quality Dataset](https://archive.ics.uci.edu/dataset/186/wine+quality)
+
+Dataset attribution is retained to acknowledge the original source.
